@@ -16,4 +16,7 @@ COPY . .
 
 EXPOSE 3000
 
+#SECRET=os.Getenv("SECRET") node index.js
+# node index.js
+
 CMD [ "npm", "start" ]
