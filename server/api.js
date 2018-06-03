@@ -7,7 +7,6 @@ module.exports = class Api{
         const router = express.Router();
 
         router.get('/userjson',keycloak.protect(),(req,res) => {
-        //router.get('/secretjson',(req:Request,res:Response) => {
             res.json(
                 {
                     greetings:"this is a secret message! Only for a user!"
@@ -16,7 +15,6 @@ module.exports = class Api{
         })
 
         router.get('/adminjson',keycloak.protect('realm:admin'),(req,res) => {
-        //router.get('/adminjson',(req:Request,res:Response) => {
             res.json(
                 {
                     greetings:"This is an admin message. Only for an admin"

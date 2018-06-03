@@ -9,25 +9,39 @@ module.exports = class App {
     constructor() {
         this.app = express();
         var keycloak = this.middleWare(this.app)
-        this.mountRoutes(this.app,keycloak)
+        this.mountRoutes(this.app, keycloak)
     }
 
-    mountRoutes(app,keycloak) {
+    mountRoutes(app, keycloak) {
         const api = new Api()
         app.use('/api', api.apiRoutes(keycloak));
     }
 
     middleWare(app) {
+        let keycloak
+        if (!process.env.DEV) {
+            const memoryStore = new session.MemoryStore();
+            app.use(session({
+                secret: process.env.SECRET,
+                resave: false,
+                saveUninitialized: true,
+                store: memoryStore
+            }));
 
-        const memoryStore = new session.MemoryStore();
-        app.use(session({
-            secret: process.env.SECRET,
-            resave: false,
-            saveUninitialized: true,
-            store: memoryStore
-        }));
-        const keycloak = new Keycloak({ store: memoryStore });
-        app.use(keycloak.middleware())
+            keycloak = new Keycloak({ store: memoryStore });
+            app.use(keycloak.middleware())
+        }
+        else {
+            console.log("Running in Dev Mode")
+            keycloak = {
+                protect: function () {
+                    return (req, res, next) => {
+                        req.kauth = { grant: { access_token: { content: { preferred_username: "tester" } } } }
+                        next()
+                    }
+                }
+            }
+        }
 
         app.use(bodyParser.json());
         app.use(bodyParser.urlencoded({ extended: false }));
