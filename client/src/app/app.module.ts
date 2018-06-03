@@ -14,16 +14,25 @@ import { NewBookingComponent } from './components/new-booking/new-booking.compon
 import { StartTripComponent } from './components/start-trip/start-trip.component';
 import { EndTripComponent } from './components/end-trip/end-trip.component';
 
+import { RouterModule, Routes } from '@angular/router';
+
+import { appRoutes } from './routing';
+import { StartPageComponent } from './components/start-page/start-page.component'
+
 @NgModule({
   declarations: [
     AppComponent,
     NewBookingComponent,
     StartTripComponent,
-    EndTripComponent
+    EndTripComponent,
+    StartPageComponent
   ],
   imports: [
     MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule, MatNativeDateModule,
-    BrowserModule, BrowserAnimationsModule, FlexLayoutModule, FormsModule, ReactiveFormsModule
+    BrowserModule, BrowserAnimationsModule, FlexLayoutModule, FormsModule, ReactiveFormsModule,
+    RouterModule.forRoot(
+      appRoutes
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
