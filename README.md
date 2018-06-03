@@ -27,3 +27,8 @@ $ docker-compose up --build
 ```
 $ ng serve
 ```
+
+## create new component module
+```
+$ ng g c components/samplePage
+```

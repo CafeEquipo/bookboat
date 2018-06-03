@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule
 } from '@angular/forms';
 
-import { MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule, MatNativeDateModule } from '@angular/material'
+import { MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule, MatNativeDateModule, MatIconModule } from '@angular/material'
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from './app.component';
@@ -28,7 +28,7 @@ import { StartPageComponent } from './components/start-page/start-page.component
     StartPageComponent
   ],
   imports: [
-    MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule, MatNativeDateModule,
+    MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule, MatNativeDateModule, MatIconModule,
     BrowserModule, BrowserAnimationsModule, FlexLayoutModule, FormsModule, ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes
