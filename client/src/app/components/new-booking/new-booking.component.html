@@ -1,0 +1,5 @@
+<form [formGroup]="myForm" (ngSubmit)='submitForm(myForm.value)'>
+  <mat-form-field>
+    <input matInput placeholder="Boat" formControlName="boatName">
+  </mat-form-field>
+</form>
