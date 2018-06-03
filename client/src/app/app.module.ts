@@ -22,7 +22,7 @@ import { EndTripComponent } from './components/end-trip/end-trip.component';
     EndTripComponent
   ],
   imports: [
-    MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule,MatNativeDateModule,
+    MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule, MatNativeDateModule,
     BrowserModule, BrowserAnimationsModule, FlexLayoutModule, FormsModule, ReactiveFormsModule
   ],
   providers: [],

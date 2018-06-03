@@ -3,8 +3,17 @@
     <input matInput placeholder="Boat" formControlName="boatName">
   </mat-form-field>
   <mat-form-field>
-    <input matInput [matDatepicker]="dp" placeholder="Start Date" [formControl]="startDate">
+    <input matInput [matDatepicker]="dp" placeholder="Start Date" formControlName="startDate">
     <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
     <mat-datepicker #dp></mat-datepicker>
-  </mat-form-field>  
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [matDatepicker]="dp2" placeholder="End Date" formControlName="endDate">
+    <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
+    <mat-datepicker #dp2></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <button [disabled]="!myForm.valid" mat-raised-button color="primary">
+    Submit
+  </button>
 </form>

@@ -22,3 +22,8 @@ $ docker run -p 3000:3000 -e SECRET='SECRET' -m server -d coffeeteam/bookboat
 ```
 $ docker-compose up --build
 ```
+
+## Run ng server
+```
+$ ng serve
+```
