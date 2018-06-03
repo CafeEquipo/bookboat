@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule
 } from '@angular/forms';
 
-import { MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule } from '@angular/material'
+import { MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule, MatNativeDateModule } from '@angular/material'
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from './app.component';
@@ -22,7 +22,7 @@ import { EndTripComponent } from './components/end-trip/end-trip.component';
     EndTripComponent
   ],
   imports: [
-    MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule
+    MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule,MatNativeDateModule,
     BrowserModule, BrowserAnimationsModule, FlexLayoutModule, FormsModule, ReactiveFormsModule
   ],
   providers: [],

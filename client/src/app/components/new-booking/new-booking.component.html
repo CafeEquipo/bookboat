@@ -2,4 +2,9 @@
   <mat-form-field>
     <input matInput placeholder="Boat" formControlName="boatName">
   </mat-form-field>
+  <mat-form-field>
+    <input matInput [matDatepicker]="dp" placeholder="Start Date" [formControl]="startDate">
+    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp></mat-datepicker>
+  </mat-form-field>  
 </form>
