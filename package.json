@@ -1,7 +1,10 @@
 {
     "name": "bookboat-app",
     "version": "0.0.1",
+    "cacheDirectories": [
+        "client/node_modules"
+    ],
     "scripts": {
-        "postinstall": "npm install --prefix client"
+        "postinstall": "cd client && npm install"
     }
 }
