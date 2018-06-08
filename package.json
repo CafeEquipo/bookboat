@@ -5,6 +5,6 @@
         "client/node_modules"
     ],
     "scripts": {
-        "postinstall": "cd client && npm install && ng build"
+        "postinstall": "cd client && npm install && cd .. && cd server && npm install"
     }
 }
