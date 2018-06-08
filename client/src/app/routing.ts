@@ -6,9 +6,9 @@ import { EndTripComponent } from './components/end-trip/end-trip.component';
 import { StartPageComponent } from './components/start-page/start-page.component'
 
 export const appRoutes: Routes = [
-    { path:'', redirectTo: 'index', pathMatch: 'full'} 
-    { path: 'index', component: StartPageComponent },
-    { path: 'new', component: NewBookingComponent },
-    { path: 'start', component: StartTripComponent },
-    { path: 'end', component: EndTripComponent}
-  ];
+  { path: '', redirectTo: 'index', pathMatch: 'full' },
+  { path: 'index', component: StartPageComponent },
+  { path: 'new', component: NewBookingComponent },
+  { path: 'start', component: StartTripComponent },
+  { path: 'end', component: EndTripComponent }
+];
