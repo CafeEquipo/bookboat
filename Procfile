@@ -1,1 +1,1 @@
-web: cd client && ng serve
+web: cd client && npm run start
