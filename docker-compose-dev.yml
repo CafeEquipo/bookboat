@@ -1,0 +1,31 @@
+version: '3.5'
+services:
+ nodedev:
+  restart: always
+  build : 
+     context: ./server     
+     dockerfile: Dockerfile.dev
+  volumes:
+   - ./server:/usr/src/app
+  environment:
+   - DEV=true
+  networks: 
+   - bookboat-dev
+  ports:
+   - 127.0.0.1:3000:3000
+   - 127.0.0.1:9229:9229
+ clientdev:
+  restart: always
+  build:
+   context: ./client     
+   dockerfile: Dockerfile.dev
+  ports:
+   - 127.0.0.1:4200:4200
+   - 127.0.0.1:80:80
+  networks: 
+   - bookboat-dev
+  volumes:
+   - ./client:/usr/src/app
+networks: 
+ bookboat-dev:
+  name: bookboat-dev

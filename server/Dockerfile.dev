@@ -1,0 +1,20 @@
+FROM node:8.11.2-alpine
+
+RUN npm install -g typescript
+
+RUN npm install -g nodemon@1.14.8
+
+WORKDIR /usr/src/app
+
+COPY ./package*.json /usr/src/app/
+
+RUN npm install
+
+RUN tsc | echo 0
+
+EXPOSE 3000
+EXPOSE 9229
+
+ENV PORT '3000'
+
+CMD nodemon -L --inspect=0.0.0.0:9229 /usr/src/app/dist/index.js  & tsc --watch

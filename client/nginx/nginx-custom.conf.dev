@@ -1,0 +1,26 @@
+map $http_upgrade $connection_upgrade {
+  default upgrade;
+  ''      close;
+}
+server {
+    client_max_body_size 30M;
+    listen 80;
+    location / {
+      proxy_pass http://0.0.0.0:4200;
+      proxy_redirect     off;
+      proxy_set_header   Host $host;
+      proxy_set_header   X-Real-IP $remote_addr;
+      proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header   X-Forwarded-Host $server_name;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection $connection_upgrade;
+    }
+    location /api/ {
+       proxy_pass http://nodedev:3000/api/;
+       proxy_redirect     off;
+       proxy_set_header   Host $host;
+       proxy_set_header   X-Real-IP $remote_addr;
+       proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+       proxy_set_header   X-Forwarded-Host $server_name;
+    }
+}
