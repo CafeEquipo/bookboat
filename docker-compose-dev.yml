@@ -1,5 +1,8 @@
 version: '3.5'
 services:
+ postgres:
+  restart: always
+  image: postgres:alpine
  nodedev:
   restart: always
   build : 
