@@ -15,7 +15,9 @@
       <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
       <mat-datepicker #dp2></mat-datepicker>
     </mat-form-field>
-
+    <mat-form-field>
+      <textarea cdkAutosizeMinRows="3" cdkTextareaAutosize #autosize="cdkTextareaAutosize" matInput placeholder="Leave a comment"></textarea>
+    </mat-form-field>
     <button [disabled]="!myForm.valid" mat-raised-button color="primary" fxFlexAlign="end" fxFlex="20">
       Submit
     </button>
