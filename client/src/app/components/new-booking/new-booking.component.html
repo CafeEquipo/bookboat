@@ -1,19 +1,25 @@
-<form [formGroup]="myForm" (ngSubmit)='submitForm(myForm.value)'>
-  <mat-form-field>
-    <input matInput placeholder="Boat" formControlName="boatName">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput [matDatepicker]="dp" placeholder="Start Date" formControlName="startDate">
-    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-    <mat-datepicker #dp></mat-datepicker>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput [matDatepicker]="dp2" placeholder="End Date" formControlName="endDate">
-    <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
-    <mat-datepicker #dp2></mat-datepicker>
-  </mat-form-field>
-  <br>
-  <button [disabled]="!myForm.valid" mat-raised-button color="primary">
-    Submit
-  </button>
-</form>
+<div fxLayout="column">
+  <form fxLayout="column" fxFlexAlign="center" [formGroup]="myForm" (ngSubmit)='submitForm(myForm.value)'>
+    <mat-form-field>
+      <mat-select placeholder="Boat" formControlName="boatName">
+        <mat-option value="option">Zora</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="dp" placeholder="Start Date" formControlName="startDate">
+      <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+      <mat-datepicker #dp></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="dp2" placeholder="End Date" formControlName="endDate">
+      <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
+      <mat-datepicker #dp2></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea cdkAutosizeMinRows="3" cdkTextareaAutosize #autosize="cdkTextareaAutosize" matInput placeholder="Leave a comment"></textarea>
+    </mat-form-field>
+    <button [disabled]="!myForm.valid" mat-raised-button color="primary" fxFlexAlign="end" fxFlex="20">
+      Submit
+    </button>
+  </form>
+</div>
