@@ -2,7 +2,14 @@ version: '3.5'
 services:
  postgres:
   restart: always
-  image: postgres:alpine
+  image: postgres:9.6-alpine
+  environment:
+    - POSTGRES_PASSWORD=${PGPASSWD}
+    - PGDATA=/var/lib/postgresql/data/db-files/
+  volumes:
+    - pgresdb:/var/lib/postgresql/data/
+  ports:
+   - 5432:5432
  nodedev:
   restart: always
   build : 
@@ -24,7 +31,7 @@ services:
    dockerfile: Dockerfile.dev
   ports:
    - 127.0.0.1:4200:4200
-   - 127.0.0.1:8080:8080
+   - 127.0.0.1:8080:80
   networks: 
    - bookboat-dev
   volumes:
@@ -32,3 +39,5 @@ services:
 networks: 
  bookboat-dev:
   name: bookboat-dev
+volumes:
+ pgresdb:

@@ -1,0 +1,59 @@
+@startuml
+' from https://gist.github.com/QuantumGhost/0955a45383a0b6c0bc24f9654b3cb561
+' uncomment the line below if you're using computer with a retina display
+' skinparam dpi 300
+!define Table(name,desc) class name as "desc" << (T,#FFAAAA) >>
+' we use bold for primary key
+' green color for unique
+' and underscore for not_null
+!define primary_key(x) <b>x</b>
+!define unique(x) <color:green>x</color>
+!define not_null(x) <u>x</u>
+' other tags available:
+' <i></i>
+' <back:COLOR></color>, where color is a color name or html color code
+' (#FFAACC)
+' see: http://plantuml.com/classes.html#More
+hide methods1
+hide stereotypes
+
+' entities
+Table(user, "user\n(User in our system)") {  
+    primary_key(emailaddress) VARCHAR[254]
+}
+
+Table(boat, "boat\n(Boats)"){
+    primary_key{id} INTEGER
+    name TEXT
+}
+
+Table(boatman,"boatman\n(boatmen of the boats)"){
+    primary_key{emailaddress} VARCHAR[254]
+    surname TEXT
+    familyname TEXT
+    phone TEXT
+}
+
+Table(mooring, "mooring\n(moorings of the boats)"){
+    primary_key{id} INTEGER
+    name TEXT
+    streetAdress TEXT
+    latitude REAL
+    longitude REAL
+}
+
+Table(booking,"booking\n(bookings of boats)"){
+    boat_id_fk text
+    user_email_fk text
+    startDate timestamp
+    endDate timestamp
+    comment text
+    numberOfClubMembers integer
+    numberOfGuest integer
+}
+mooring --> boat
+boatman "1" --> "0..N" boat
+user "1" --> "0..N" booking
+boat "1" --> "0..N" booking
+
+@enduml

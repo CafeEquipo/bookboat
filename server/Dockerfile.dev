@@ -1,6 +1,6 @@
 FROM node:8.11.2-alpine
 
-RUN npm install -g typescript
+RUN npm install -g typescript@3.0.1
 
 RUN npm install -g nodemon@1.14.8
 
