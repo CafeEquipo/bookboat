@@ -18,7 +18,8 @@
     <mat-form-field>
       <textarea cdkAutosizeMinRows="3" cdkTextareaAutosize #autosize="cdkTextareaAutosize" matInput placeholder="Leave a comment"></textarea>
     </mat-form-field>
-    <button [disabled]="!myForm.valid" mat-raised-button color="primary" fxFlexAlign="end" fxFlex="20">
+    <button [ngStyle]="{'margin-bottom.px':25}" [disabled]="!myForm.valid" mat-raised-button color="primary" fxFlexAlign="end"
+      fxFlex="20">
       Submit
     </button>
   </form>
