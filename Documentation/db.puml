@@ -19,23 +19,23 @@ hide stereotypes
 
 ' entities
 Table(user, "user\n(User in our system)") {  
-    primary_key(emailaddress) VARCHAR[254]
+    primary_key(emailaddress) VARCHAR[254],
+    familyname TEXT,
+    firstname TEXT
 }
 
 Table(boat, "boat\n(Boats)"){
-    primary_key{id} INTEGER
+    primary_key(id) INTEGER
     name TEXT
 }
 
 Table(boatman,"boatman\n(boatmen of the boats)"){
-    primary_key{emailaddress} VARCHAR[254]
-    surname TEXT
-    familyname TEXT
+    primary_key(emailaddress) VARCHAR[254]
     phone TEXT
 }
 
 Table(mooring, "mooring\n(moorings of the boats)"){
-    primary_key{id} INTEGER
+    primary_key(id) INTEGER
     name TEXT
     streetAdress TEXT
     latitude REAL
@@ -48,9 +48,8 @@ Table(booking,"booking\n(bookings of boats)"){
     startDate timestamp
     endDate timestamp
     comment text
-    numberOfClubMembers integer
-    numberOfGuest integer
 }
+boatman --> user
 mooring --> boat
 boatman "1" --> "0..N" boat
 user "1" --> "0..N" booking
