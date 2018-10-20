@@ -1,22 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Booking = sequelize.define('Booking', {
-    boat_id_fk:{
-        type: DataTypes.INTEGER,
-        references: {
-            model: Boat,
-            key:'id',
-            deferrable: DataTypes.Deferrable.INITIALLY_IMMEDIATE
-        }
-    },
-    user_email_fk:{
-        type: DataTypes.STRING,
-        references: {
-            model: User,
-            key:'emailaddress',
-            deferrable: DataTypes.Deferrable.INITIALLY_IMMEDIATE
-        }
-    },
+  const Booking = sequelize.define("Booking", {
     startDate:{
         type: DataTypes.DATE,
         allowNull:false
@@ -26,8 +10,16 @@ module.exports = (sequelize, DataTypes) => {
         allowNull:false
     },
     comment:{
-        type: DataType.TEXT
+        type: DataTypes.TEXT
     }
   });
+
+  Booking.associate = models => {
+      Booking.belongsTo(models.Boat,
+        {foreignKey: { allowNull: false }})
+      Booking.belongsTo(models.User,
+        {foreignKey: { allowNull: false }})
+  }
+
   return Booking;
 };

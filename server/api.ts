@@ -1,6 +1,5 @@
 const Keycloak = require('keycloak-connect')
 import { Router, Request, Response } from 'express';
-import { Booking } from './model/newBooking'
 import { UserService } from './service/userService'
 
 export class Api{ 
@@ -10,8 +9,7 @@ export class Api{
         const router: Router = Router()
 
         router.post('/bookboat',(req,res) => {
-            const newBooking:Booking = req.body
-            res.send(newBooking)
+            res.send(req.body)
         })
 
         router.post('/newUser',(req,res) => {

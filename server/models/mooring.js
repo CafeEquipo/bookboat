@@ -1,13 +1,9 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Mooring = sequelize.define('Mooring', {
-    primaryKey:{
-        type: DataTypes.INTEGER,
-        isUnique:true,
-        allowNull:false
-    },
+  const Mooring = sequelize.define("Mooring", {
     name: {
-        type:DataTypes.STRING
+        type:DataTypes.STRING,
+        allowNull: false
     },
     streetAdress: {
         type: DataTypes.STRING,

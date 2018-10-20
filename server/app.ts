@@ -3,6 +3,7 @@ import express = require('express')
 import Keycloak = require('keycloak-connect')
 import session = require('express-session')
 import { Api } from './api'
+import db = require('./models')
 
 export class App {
     
@@ -23,6 +24,7 @@ export class App {
             } }
           }
         this.mountRoutes()
+        this.sequelizeInit()
     }
 
     mountRoutes() {
@@ -55,6 +57,12 @@ export class App {
             }
         })
 
+    }
+
+    private sequelizeInit(){
+      db.sequelize.sync().then(() => {
+        console.log("sequelize inited")
+      })
     }
 
 // ## CORS middleware
