@@ -7,9 +7,13 @@ import {
   ReactiveFormsModule
 } from '@angular/forms';
 
+<<<<<<< HEAD
 import  {initializer}  from './utils/app-init';
 
 import { MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule, MatNativeDateModule, MatIconModule, MatSelectModule } from '@angular/material'
+=======
+import { MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule, MatNativeDateModule, MatIconModule, MatSelectModule, MatToolbarModule } from '@angular/material'
+>>>>>>> 6f5e494b8cc27e9f7264b963f8029e99d4ce7a24
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from './app.component';
@@ -36,7 +40,7 @@ import {HttpClientModule} from '@angular/common/http'
   imports: [
     HttpClientModule,
     MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule, MatNativeDateModule, MatIconModule,
-    MatSelectModule, BrowserModule, BrowserAnimationsModule, FlexLayoutModule, FormsModule, ReactiveFormsModule,
+    MatSelectModule, BrowserModule, BrowserAnimationsModule, FlexLayoutModule, FormsModule, ReactiveFormsModule, MatToolbarModule,
     RouterModule.forRoot(
       appRoutes
     ),

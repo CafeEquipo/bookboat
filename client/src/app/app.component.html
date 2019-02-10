@@ -1,5 +1,25 @@
-<a routerLink="/index" routerLinkActive="active">
-    <img title="Home" alt="home-icon" width="50" height="30" src="../../../assets/port.svg">
-</a>
-<router-outlet>
-</router-outlet>
+<div fxLayout="column">
+    <header fxFlex="10">
+        <mat-toolbar fxFlex>
+            <span>Book Boat SUB Bremen</span>
+        </mat-toolbar>
+    </header>
+
+    <div [ngStyle]="{'margin-top.px':15}"></div>
+
+    <a fxFlex="10" routerLink="/index" routerLinkActive="active">
+        <img title="Home" alt="home-icon" width="50" height="30" src="../../../assets/port.svg">
+    </a>
+
+    <div fxFlexAlign="center">
+        <router-outlet fxFlex="10">
+        </router-outlet>
+    </div>
+
+    <div fxFlex></div>
+    <footer [ngStyle]="{'margin-top': auto}" fxFlex="10">
+        <mat-toolbar>
+            <span>Book Boat SUB Bremen</span>
+        </mat-toolbar>
+    </footer>
+</div>
