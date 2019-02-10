@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { StartTripService } from '../start-trip/start-trip.service';
 
 @Component({
   selector: 'app-new-booking',
@@ -10,7 +11,7 @@ export class NewBookingComponent implements OnInit {
 
   myForm
 
-  constructor() {
+  constructor(private startTripService:StartTripService) {
     this.myForm = new FormGroup({
       boatName: new FormControl(null, [Validators.required]),
       startDate: new FormControl(null, [Validators.required]),
@@ -21,7 +22,12 @@ export class NewBookingComponent implements OnInit {
     console.log(value);
   }
 
+
+
   ngOnInit() {
+    this.startTripService.getTest().subscribe(()=> {
+      console.log("test request")
+    })
   }
 
 }

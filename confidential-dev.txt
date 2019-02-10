@@ -1,0 +1,6 @@
+export PGPASSWD=postgres
+export KC_USER=admin
+export KC_PASSWORD=admin 
+export kC_POSTGRES_USER=postgres 
+export KC_POSTGRES_PW=postgres
+export SERVER_SESSION_SECRET=keykloakstore

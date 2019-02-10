@@ -1,0 +1,9 @@
+{
+    "realm": "bookboat",
+    "auth-server-url": "http://172.31.0.3:9080/auth",
+    "ssl-required": "external",
+    "resource": "angular-client",
+    "public-client": true,
+    "confidential-port": 0
+  }
+

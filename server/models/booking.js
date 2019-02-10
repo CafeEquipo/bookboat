@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     comment:{
         type: DataTypes.TEXT
+    },
+    approvedByBoatMan:{
+      type: DataTypes.BOOLEAN
     }
   });
 

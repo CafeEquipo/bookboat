@@ -1,21 +1,21 @@
 {
   "development": {
     "username": "postgres",
-    "password": "postgres",
+    "password": { "use_env_variable": "PGPASSWD"},
     "database": "bookboat",
     "host": "postgres",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
-    "password": "postgres",
+    "password": { "use_env_variable": "PGPASSWD"},
     "database": "bookboat",
     "host": "postgres",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
-    "password": "postgres",
+    "password": { "use_env_variable": "PGPASSWD"},
     "database": "bookboat",
     "host": "postgres",
     "dialect": "postgres"

@@ -60,3 +60,6 @@ typings/
 package-lock.json
 
 server/dist
+confidential.txt
+Documentation/test.txt
+server/tests/testData.sql

@@ -1,12 +1,10 @@
-import { User } from "./user";
-import { Boat } from "./boat";
-
 export interface Booking{
- boatId:Boat,
- user: User,
+ id?:number,
+ BoatId: number,
+ UserId: number,
  startDate:Date,
  endDate:Date,
  comment:string,
- clubMembers:string[],
- guests:string[] 
+ approvedByBoatMan:boolean,
+ isCanceled:boolean
 }

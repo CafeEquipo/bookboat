@@ -23,9 +23,12 @@ services:
    - DEV=true
   networks: 
    - bookboat-dev
+   - keycloak-network
   ports:
    - 127.0.0.1:3000:3000
    - 127.0.0.1:9229:9229
+  environment:
+    - SECRET=${SERVER_SESSION_SECRET}
  clientdev:
   restart: always
   build:
@@ -33,7 +36,7 @@ services:
    dockerfile: Dockerfile.dev
   ports:
    - 127.0.0.1:4200:4200
-   - 127.0.0.1:8080:80
+   - 127.0.0.1:80:80
   networks: 
    - bookboat-dev
   volumes:
@@ -41,5 +44,8 @@ services:
 networks: 
  bookboat-dev:
   name: bookboat-dev
+ keycloak-network:
+  external:
+   name: keycloak_keycloak-network
 volumes:
  pgresdb:

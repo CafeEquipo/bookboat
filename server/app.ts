@@ -2,8 +2,8 @@ import * as bodyParser from 'body-parser'
 import express = require('express')
 import Keycloak = require('keycloak-connect')
 import session = require('express-session')
-import { Api } from './api'
 import db = require('./models')
+import { BookingApi } from './web/bookingApi'
 
 export class App {
     
@@ -12,23 +12,30 @@ export class App {
 
     constructor() {
         this.app = express()
-        this.keycloak = this.middleWare()
-        if(!process.env.DEV){
-            this.addKeycloak()
-          }else{//fake keycloak middleware
-            console.log("Running in Dev Mode")
-            this.keycloak = {protect :function () {
-              return (req:express.Request, res:express.Response, next:any) => {
-                req.kauth = {grant:{access_token:{content:{preferred_username:"tester"}}}}
-                next()}
-            } }
-          }
+        this.keycloak = this.middleWare()        
+        this.addKeycloak()
         this.mountRoutes()
         this.sequelizeInit()
     }
 
     mountRoutes() {
-        this.app.use('/api', Api.apiRoutes(this.keycloak));
+        //this.app.use('/api', Api.apiRoutes(this.keycloak));
+        // const adminRouter: express.Router = express.Router();
+        // adminRouter.use('/admin',Keycloak.protect('realm:admin'))
+
+
+        // const boatmanRouter: express.Router = express.Router();
+        // boatmanRouter.use('/boatman',Keycloak.protect('realm:boatman'))
+
+        const userRouter: express.Router = express.Router();
+        userRouter.use('/user',Keycloak.protect('realm:user'))
+        userRouter.use('/user',BookingApi.userApi)
+        this.app.use('/api/',userRouter)
+
+        // const routerPublic:Router = Router();
+        // routerPublic.use('/public',PublicApi.publicRoutes())
+        // this.app.use('/api/', routerAdmin)
+        // this.app.use('/api/',routerPublic)
     }
 
     private addKeycloak(){

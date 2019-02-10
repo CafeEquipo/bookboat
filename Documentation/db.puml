@@ -48,6 +48,7 @@ Table(booking,"booking\n(bookings of boats)"){
     startDate timestamp
     endDate timestamp
     comment text
+    approvedByBoatMan boolean
 }
 boatman --> user
 mooring --> boat

@@ -1,0 +1,40 @@
+version: '3.5'
+services:
+ postgres:
+  restart: always
+  image: postgres:10.4
+  networks:
+   keycloak-network:
+    aliases:
+     - localhost #stupid, but for keycloak and angular  
+  environment: 
+   - POSTGRES_DB=keycloak
+   - POSTGRES_USER=${kC_POSTGRES_USER}
+   - POSTGRES_PASSWORD=${KC_POSTGRES_PW}
+  volumes:
+   - pgdata:/var/lib/postgresql/data
+ keycloak:
+  restart: always
+  image: jboss/keycloak:4.0.0.Final
+  networks:
+   - keycloak-network
+  ports:
+   #- 127.0.0.1:9080:9080
+   - 9080:9080
+  depends_on:
+   - postgres
+  environment:
+   - KEYCLOAK_USER=${KC_USER}
+   - KEYCLOAK_PASSWORD=${KC_PASSWORD}
+   - DB_VENDOR=POSTGRES 
+   - DB_USER=${kC_POSTGRES_USER}
+   - DB_PASSWORD=${KC_POSTGRES_PW}
+   - PROXY_ADDRESS_FORWARDING=true
+   - KEYCLOAK_LOGLEVEL=DEBUG
+  command: ["-b", "0.0.0.0", "-Dkeycloak.migration.action=import", "-Dkeycloak.migration.provider=dir", "-Dkeycloak.migration.dir=/opt/jboss/keycloak/realm-config", "-Dkeycloak.migration.strategy=OVERWRITE_EXISTING", "-Djboss.socket.binding.port-offset=1000"]
+  volumes:
+   - ./realm-config:/opt/jboss/keycloak/realm-config
+networks: 
+  keycloak-network:
+volumes: 
+  pgdata:

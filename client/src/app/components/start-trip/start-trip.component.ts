@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StartTripService } from './start-trip.service';
 
 @Component({
   selector: 'app-start-trip',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartTripComponent implements OnInit {
 
-  constructor() { }
+  constructor(private startTripService:StartTripService) { }
 
   ngOnInit() {
+    this.startTripService.getTest().subscribe(()=> {
+      
+    })
   }
 
 }

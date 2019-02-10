@@ -1,10 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
 import {
   FormsModule,
   ReactiveFormsModule
 } from '@angular/forms';
+
+import  {initializer}  from './utils/app-init';
 
 import { MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule, MatNativeDateModule, MatIconModule, MatSelectModule } from '@angular/material'
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -18,6 +21,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { appRoutes } from './routing';
 import { StartPageComponent } from './components/start-page/start-page.component'
+//import { AppAuthGuard } from './utils/auth-guard';
+import {HttpClientModule} from '@angular/common/http'
+
 
 @NgModule({
   declarations: [
@@ -28,13 +34,22 @@ import { StartPageComponent } from './components/start-page/start-page.component
     StartPageComponent
   ],
   imports: [
+    HttpClientModule,
     MatFormFieldModule, MatButtonModule, MatDatepickerModule, MatInputModule, MatNativeDateModule, MatIconModule,
     MatSelectModule, BrowserModule, BrowserAnimationsModule, FlexLayoutModule, FormsModule, ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes
-    )
+    ),
+    KeycloakAngularModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializer,
+      multi: true,
+      deps: [KeycloakService]
+    }
+  ],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
